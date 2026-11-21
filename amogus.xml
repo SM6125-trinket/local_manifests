@@ -2,15 +2,9 @@
 <manifest>
     <remote name="sm6125-trinket"
         fetch="https://github.com/SM6125-trinket/"
-        revision="refs/heads/fourteen" />
+        revision="refs/heads/fifteen" />
     <remote name="aospa-vendor"
         fetch="https://github.com/ThankYouMario/" />
-
-    <!-- Unused LineageOS 21 libfmjni depends on undefined qcom_libfmjni_defaults in PixelOS;
-         amogus uses packages/apps/FMRadio/jni/fmr instead.
-         Upstream BtHelper (floating main branch) depends on missing custom-sdk module in PixelOS 14. -->
-    <remove-project name="LineageOS/android_vendor_qcom_opensource_libfmjni" />
-    <remove-project name="TheParasiteProject/packages_apps_BtHelper" />
 
     <!-- Replace upstream QCOM CAF audio (sm8150) and thermal HALs with SM6125-trinket forks -->
     <remove-project name="LineageOS/android_hardware_qcom_audio" path="hardware/qcom-caf/sm8150/audio" />
@@ -29,8 +23,6 @@
     <!-- Motorola Amogus (SM6125) -->
     <project path="device/motorola/amogus" name="android_device_motorola_amogus"
         remote="sm6125-trinket" />
-    <project path="device/motorola/amogus-kernel" name="android_device_motorola_amogus-kernel"
-        remote="sm6125-trinket" />
     <project path="kernel/motorola/msm-4.14" name="android_kernel_motorola_msm-4.14"
         remote="sm6125-trinket" />
     <project path="vendor/motorola/amogus" name="android_vendor_motorola_amogus"
@@ -44,9 +36,9 @@
     <project path="vendor/egistec/interfaces" name="platform_vendor_egistec_interfaces"
         remote="sm6125-trinket" />
 
-    <!-- QCOM Common (dsprpcd & qseecomd blobs) -->
+    <!-- QCOM Common (dsprpcd, qseecomd-legacy, and charging blobs) -->
     <project path="vendor/qcom/common" name="proprietary_vendor_qcom_common"
-        remote="aospa-vendor" revision="uvite" />
+        remote="aospa-vendor" revision="vauxite" />
 
     <!-- QCOM CAF HALs (SM6125-trinket forks) -->
     <project path="hardware/qcom-caf/sm8150/audio" name="android_hardware_qcom_audio"
